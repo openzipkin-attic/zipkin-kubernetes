@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: zipkin-collector
+spec:
+  replicas: 1
+  selector:
+    app: zipkin-collector
+  template:
+    metadata:
+      labels:
+        app: zipkin-collector
+    spec:
+      containers:
+        - name: collector
+          image: niccaluim/zipkin-collector
+          ports:
+            - containerPort: 9410
+          env:
+            - name: CASSANDRA_SERVICE
+              value: zipkin-cassandra
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace

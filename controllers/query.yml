@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: zipkin-query
+spec:
+  replicas: 1
+  selector:
+    app: zipkin-query
+  template:
+    metadata:
+      labels:
+        app: zipkin-query
+    spec:
+      containers:
+        - name: query
+          image: niccaluim/zipkin-query
+          ports:
+            - containerPort: 9411
+          env:
+            - name: CASSANDRA_SERVICE
+              value: zipkin-cassandra
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
