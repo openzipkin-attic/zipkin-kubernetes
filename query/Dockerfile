@@ -1,4 +1,4 @@
-FROM itszero/zipkin-query
+FROM openzipkin/zipkin-query:1.9.0
 
 ADD boot.sh /boot.sh
 RUN chmod +x /boot.sh
