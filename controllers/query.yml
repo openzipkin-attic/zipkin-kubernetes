@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: query
-          image: niccaluim/zipkin-query
+          image: openzipkin/zipkin-query-k8s:1.9.0
           ports:
             - containerPort: 9411
           env:

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: collector
-          image: niccaluim/zipkin-collector
+          image: openzipkin/zipkin-collector-k8s:1.9.0
           ports:
             - containerPort: 9410
           env:
