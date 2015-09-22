@@ -4,7 +4,7 @@ MAINTAINER Dana NicCaluim <dniccaluim@airware.com>
 RUN apt-get update
 RUN apt-get install -y procps psmisc
 
-ADD https://raw.githubusercontent.com/openzipkin/zipkin/master/zipkin-cassandra-core/src/main/resources/cassandra-schema-cql3.txt /schema.txt
+ADD https://raw.githubusercontent.com/openzipkin/zipkin/1.9.0/zipkin-cassandra-core/src/main/resources/cassandra-schema-cql3.txt /schema.txt
 ADD boot.sh /boot.sh
 RUN chmod +x /boot.sh
 
