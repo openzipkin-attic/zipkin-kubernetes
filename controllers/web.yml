@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: zipkin-web
+spec:
+  replicas: 1
+  selector:
+    app: zipkin-web
+  template:
+    metadata:
+      labels:
+        app: zipkin-web
+    spec:
+      containers:
+        - name: web
+          image: openzipkin/zipkin-web-k8s:1.9.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: QUERY_SERVICE
+              value: zipkin-query
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
